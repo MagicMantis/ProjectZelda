@@ -11,18 +11,24 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_slime</sprite>
+    <sprite>sprites\sprite8</sprite>
+    <sprite>sprites\spr_player_anim</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_character_move.gml</script>
     <script>scripts\scr_player_move.gml</script>
+    <script>scripts\scr_player_action.gml</script>
+    <script>scripts\game_init.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_enemy</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_player</object>
     <object>objects\object3</object>
+    <object>objects\obj_player_animed</object>
+    <object>objects\obj_controller</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test_room</room>

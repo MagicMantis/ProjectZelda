@@ -11,20 +11,36 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_slime</sprite>
+    <sprite>sprites\spr_forest_start_room</sprite>
+    <sprite>sprites\spr_forest_four_way</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bkg_tiles</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_character_move.gml</script>
     <script>scripts\scr_player_move.gml</script>
+    <script>scripts\scr_gen_room.gml</script>
+    <script>scripts\scr_generate_forest.gml</script>
+    <script>scripts\scr_game_init.gml</script>
+    <script>scripts\scr_controller_step.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\obj_controller</object>
     <object>objects\obj_enemy</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_player</object>
     <object>objects\object3</object>
+    <objects name="Rooms">
+      <objects name="Forest">
+        <object>objects\obj_forest_start_room</object>
+        <object>objects\obj_forest_four_way</object>
+      </objects>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_forest</room>
     <room>rooms\rm_test_room</room>
   </rooms>
   <help>

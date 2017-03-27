@@ -11,8 +11,22 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_slime</sprite>
-    <sprite>sprites\spr_forest_start_room</sprite>
-    <sprite>sprites\spr_forest_four_way</sprite>
+    <sprites name="Rooms">
+      <sprite>sprites\spr_forest_start_room_right</sprite>
+      <sprite>sprites\spr_forest_four_way</sprite>
+      <sprite>sprites\spr_forest_three_way_top</sprite>
+      <sprite>sprites\spr_forest_three_way_right</sprite>
+      <sprite>sprites\spr_forest_three_way_bottom</sprite>
+      <sprite>sprites\spr_forest_three_way_left</sprite>
+      <sprite>sprites\spr_forest_top_right</sprite>
+      <sprite>sprites\spr_forest_top_left</sprite>
+      <sprite>sprites\spr_forest_bottom_left</sprite>
+      <sprite>sprites\spr_forest_bottom_right</sprite>
+      <sprite>sprites\spr_forest_dead_right</sprite>
+      <sprite>sprites\spr_forest_dead_left</sprite>
+      <sprite>sprites\spr_forest_dead_top</sprite>
+      <sprite>sprites\spr_forest_dead_bottom</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bkg_tiles</background>
@@ -36,6 +50,18 @@
       <objects name="Forest">
         <object>objects\obj_forest_start_room</object>
         <object>objects\obj_forest_four_way</object>
+        <object>objects\obj_forest_top_right</object>
+        <object>objects\obj_forest_top_left</object>
+        <object>objects\obj_forest_bottom_left</object>
+        <object>objects\obj_forest_bottom_right</object>
+        <object>objects\obj_forest_dead_right</object>
+        <object>objects\obj_forest_dead_left</object>
+        <object>objects\obj_forest_dead_top</object>
+        <object>objects\obj_forest_dead_bottom</object>
+        <object>objects\obj_forest_three_way_right</object>
+        <object>objects\obj_forest_three_way_left</object>
+        <object>objects\obj_forest_three_way_top</object>
+        <object>objects\obj_forest_three_way_bottom</object>
       </objects>
     </objects>
   </objects>

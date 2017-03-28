@@ -12,7 +12,7 @@
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_slime</sprite>
     <sprites name="Rooms">
-      <sprite>sprites\spr_forest_start_room_right</sprite>
+      <sprite>sprites\spr_forest_start_room_left</sprite>
       <sprite>sprites\spr_forest_four_way</sprite>
       <sprite>sprites\spr_forest_three_way_top</sprite>
       <sprite>sprites\spr_forest_three_way_right</sprite>
@@ -39,6 +39,7 @@
     <script>scripts\scr_generate_forest.gml</script>
     <script>scripts\scr_game_init.gml</script>
     <script>scripts\scr_controller_step.gml</script>
+    <script>scripts\scr_gen_doors.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_controller</object>

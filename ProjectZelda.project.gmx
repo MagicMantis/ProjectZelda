@@ -29,6 +29,8 @@
       <sprite>sprites\spr_forest_dead_left</sprite>
       <sprite>sprites\spr_forest_dead_top</sprite>
       <sprite>sprites\spr_forest_dead_bottom</sprite>
+      <sprite>sprites\spr_forest_hallway_hor</sprite>
+      <sprite>sprites\spr_forest_hallway_ver</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -69,6 +71,8 @@
         <object>objects\obj_forest_three_way_left</object>
         <object>objects\obj_forest_three_way_top</object>
         <object>objects\obj_forest_three_way_bottom</object>
+        <object>objects\obj_forest_hallway_ver</object>
+        <object>objects\obj_forest_hallway_hor</object>
       </objects>
     </objects>
   </objects>

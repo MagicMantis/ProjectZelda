@@ -17,12 +17,6 @@ var doorCount = 0
 var layout = ds_grid_create(maxWidth,maxHeight);
 ds_grid_clear(layout, 0);
 
-
-show_debug_message(ds_grid_width(layout));
-show_debug_message(ds_grid_height(layout));
-show_debug_message(ds_grid_get(layout,0,0));
-show_debug_message(ds_grid_get(layout,1,1));
-
 var queue = ds_queue_create();
 
 var startX = irandom_range(1,maxWidth-2);
@@ -61,14 +55,15 @@ while (!ds_queue_empty(queue)) {
     roomsRemaining = maxRooms - ds_queue_size(queue) - roomsCreated;
     var x_loc = ds_queue_dequeue(queue);
     var y_loc = ds_queue_dequeue(queue);
+    if (ds_grid_get(layout, x_loc, y_loc) != 0) continue;
     //check if door to left is manditory
     if (x_loc > 0) {
         if (ds_grid_get(layout,x_loc-1,y_loc) & 1 > 0) {
             ds_grid_set(layout,x_loc,y_loc, (ds_grid_get(layout,x_loc,y_loc) | 4));
         }
         else if (ds_grid_get(layout,x_loc-1,y_loc) == 0 and random(sqrt(roomsRemaining)) > 1.0) {
-            ds_queue_enqueue(queue, x_loc-1, y_loc);
             ds_grid_set(layout,x_loc,y_loc, (ds_grid_get(layout,x_loc,y_loc) | 4));
+            ds_queue_enqueue(queue, x_loc-1, y_loc);
         }
     }
     //check if door to top is manditory
@@ -83,7 +78,7 @@ while (!ds_queue_empty(queue)) {
     }
     //check if door to right is manditory
     if (x_loc < maxWidth-2) {
-        if (ds_grid_get(layout,x_loc,y_loc+1) & 4 > 0) {
+        if (ds_grid_get(layout,x_loc+1,y_loc) & 4 > 0) {
             ds_grid_set(layout,x_loc,y_loc, (ds_grid_get(layout,x_loc,y_loc) | 1));
         }
         else if (ds_grid_get(layout,x_loc+1,y_loc) == 0 and random(sqrt(roomsRemaining)) > 1.0) {
@@ -102,49 +97,52 @@ while (!ds_queue_empty(queue)) {
         }
     }
     roomsCreated++;
-    show_debug_message(ds_queue_size(queue));
 }
 
+
 for (xx = 0; xx < maxWidth; xx++) {
+    msg = ""
     for (yy = 0; yy < maxHeight; yy++) {
+        msg += string(ds_grid_get(layout,yy,xx)) + " "
         if (xx == startX and yy == startY) continue;
         switch (ds_grid_get(layout,xx,yy)) {
             case 0:
                 break;
-            case 1:
+            case 1: //0001 (door right)
                 instance_create(xx*1024,yy*1024,obj_forest_dead_left); break;
-            case 2:
+            case 2: //0010 (door down)
                 instance_create(xx*1024,yy*1024,obj_forest_dead_top); break;
-            case 3:
+            case 3: //0011 (door down and right)
                 instance_create(xx*1024,yy*1024,obj_forest_top_left); break;
-            case 4:
+            case 4: //0100 (door left)
                 instance_create(xx*1024,yy*1024,obj_forest_dead_right); break;
-            case 5:
-                instance_create(xx*1024,yy*1024,obj_forest_four_way); break;
-            case 6:
+            case 5: //0101 (door left and right)
+                instance_create(xx*1024,yy*1024,obj_forest_hallway_hor); break;
+            case 6: //0110 (door left and down)
                 instance_create(xx*1024,yy*1024,obj_forest_top_right); break;
-            case 7:
+            case 7: //0111 (door left right and down)
                 instance_create(xx*1024,yy*1024,obj_forest_three_way_top); break;
-            case 8:
+            case 8: //1000 (door up)
                 instance_create(xx*1024,yy*1024,obj_forest_dead_bottom); break;
-            case 9:
+            case 9: //1001 (door up and right)
                 instance_create(xx*1024,yy*1024,obj_forest_bottom_left); break;
-            case 10:
-                instance_create(xx*1024,yy*1024,obj_forest_four_way); break;
-            case 11:
-                instance_create(xx*1024,yy*1024,obj_forest_three_way_right); break;
+            case 10: //1010 (door up and down)
+                instance_create(xx*1024,yy*1024,obj_forest_hallway_ver); break;
+            case 11: //1011
+                instance_create(xx*1024,yy*1024,obj_forest_three_way_left); break;
             case 12:
                 instance_create(xx*1024,yy*1024,obj_forest_bottom_right); break;
             case 13:
                 instance_create(xx*1024,yy*1024,obj_forest_three_way_bottom); break;
             case 14:
-                instance_create(xx*1024,yy*1024,obj_forest_three_way_left); break;
+                instance_create(xx*1024,yy*1024,obj_forest_three_way_right); break;
             case 15:
                 instance_create(xx*1024,yy*1024,obj_forest_four_way); break;
             default:
                 break;
         }
     }
+    show_debug_message(msg);
 }
 
 

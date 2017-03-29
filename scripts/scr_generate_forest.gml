@@ -1,5 +1,12 @@
 //generate a forest dungeon
 
+randomize()
+seed = irandom(1000000);
+random_set_seed(340264);
+//random_set_seed(seed);
+show_debug_message("Seed: "+string(seed));
+
+
 var maxRooms = argument0
 var maxWidth = argument1
 var maxHeight = argument2
@@ -52,9 +59,14 @@ switch (irandom(4)) {
 
 var roomsCreated = 1
 while (!ds_queue_empty(queue)) {
-    roomsRemaining = maxRooms - ds_queue_size(queue) - roomsCreated;
+    roomsRemaining = maxRooms - (ds_queue_size(queue)/2) - roomsCreated;
+    //if (roomsRemaining < 0) {
+        show_debug_message(ds_queue_size(queue));
+    //}
     var x_loc = ds_queue_dequeue(queue);
     var y_loc = ds_queue_dequeue(queue);
+    if (ds_grid_get(layout, x_loc, y_loc) == -1)
+            ds_grid_set(layout,x_loc,y_loc, 0);
     if (ds_grid_get(layout, x_loc, y_loc) != 0) continue;
     //check if door to left is manditory
     if (x_loc > 0) {
@@ -64,6 +76,7 @@ while (!ds_queue_empty(queue)) {
         else if (ds_grid_get(layout,x_loc-1,y_loc) == 0 and random(sqrt(roomsRemaining)) > 1.0) {
             ds_grid_set(layout,x_loc,y_loc, (ds_grid_get(layout,x_loc,y_loc) | 4));
             ds_queue_enqueue(queue, x_loc-1, y_loc);
+            ds_grid_set(layout,x_loc-1,y_loc, 0);
         }
     }
     //check if door to top is manditory
@@ -74,6 +87,7 @@ while (!ds_queue_empty(queue)) {
         else if (ds_grid_get(layout,x_loc,y_loc-1) == 0 and random(sqrt(roomsRemaining)) > 1.0) {
             ds_grid_set(layout,x_loc,y_loc, (ds_grid_get(layout,x_loc,y_loc) | 8));
             ds_queue_enqueue(queue, x_loc, y_loc-1);
+            ds_grid_set(layout,x_loc,y_loc-1, -1);
         }
     }
     //check if door to right is manditory
@@ -84,6 +98,7 @@ while (!ds_queue_empty(queue)) {
         else if (ds_grid_get(layout,x_loc+1,y_loc) == 0 and random(sqrt(roomsRemaining)) > 1.0) {
             ds_grid_set(layout,x_loc,y_loc, (ds_grid_get(layout,x_loc,y_loc) | 1));
             ds_queue_enqueue(queue, x_loc+1, y_loc);
+            ds_grid_set(layout,x_loc+1,y_loc, -1);
         }
     }
     //check if door to bottom is manditory
@@ -94,11 +109,12 @@ while (!ds_queue_empty(queue)) {
         else if (ds_grid_get(layout,x_loc,y_loc+1) == 0 and random(sqrt(roomsRemaining)) > 1.0) {
             ds_grid_set(layout,x_loc,y_loc, (ds_grid_get(layout,x_loc,y_loc) | 2));
             ds_queue_enqueue(queue, x_loc, y_loc+1);
+            ds_grid_set(layout,x_loc,y_loc+1, -1);
         }
     }
     roomsCreated++;
 }
-
+show_debug_message(roomsCreated);
 
 for (xx = 0; xx < maxWidth; xx++) {
     msg = ""
@@ -128,15 +144,15 @@ for (xx = 0; xx < maxWidth; xx++) {
                 instance_create(xx*1024,yy*1024,obj_forest_bottom_left); break;
             case 10: //1010 (door up and down)
                 instance_create(xx*1024,yy*1024,obj_forest_hallway_ver); break;
-            case 11: //1011
+            case 11: //1011 (door up right and down)
                 instance_create(xx*1024,yy*1024,obj_forest_three_way_left); break;
-            case 12:
+            case 12: //1100 (door up and left)
                 instance_create(xx*1024,yy*1024,obj_forest_bottom_right); break;
-            case 13:
+            case 13: //1101 (door up right and left)
                 instance_create(xx*1024,yy*1024,obj_forest_three_way_bottom); break;
-            case 14:
+            case 14: //1110 (door up down and left)
                 instance_create(xx*1024,yy*1024,obj_forest_three_way_right); break;
-            case 15:
+            case 15: //1111 (door up down right and left)
                 instance_create(xx*1024,yy*1024,obj_forest_four_way); break;
             default:
                 break;
@@ -144,36 +160,3 @@ for (xx = 0; xx < maxWidth; xx++) {
     }
     show_debug_message(msg);
 }
-
-
-//old version
-/*
-for (xx = 0; xx < 5; xx++) {
-    for (yy = 0; yy < 5; yy++) {
-        switch (irandom(6)) {
-            case 0:
-                if (!playerGenerated) {
-                    instance_create(xx*1024,yy*1024,obj_forest_start_room);
-                    playerGenerated = true;
-                }
-                else {
-                    instance_create(xx*1024,yy*1024,obj_forest_four_way);
-                }
-                break;
-            case 1:
-                instance_create(xx*1024,yy*1024,obj_forest_top_right);
-                break;
-            case 2:
-                instance_create(xx*1024,yy*1024,obj_forest_top_right);
-                break;
-            case 3:
-                instance_create(xx*1024,yy*1024,obj_forest_top_right);
-                break;
-            case 4:
-                instance_create(xx*1024,yy*1024,obj_forest_top_right);
-                break;
-            default:
-                instance_create(xx*1024,yy*1024,obj_forest_four_way);
-        }
-    }
-}*/

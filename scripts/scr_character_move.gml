@@ -1,4 +1,4 @@
-///move character
+///scr_character_move(hspd, vspd)
 
 var hspd = argument0;
 var vspd = argument1;

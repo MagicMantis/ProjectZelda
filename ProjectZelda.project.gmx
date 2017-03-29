@@ -32,23 +32,37 @@
       <sprite>sprites\spr_forest_hallway_hor</sprite>
       <sprite>sprites\spr_forest_hallway_ver</sprite>
     </sprites>
+    <sprite>sprites\spr_sludge</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkg_tiles</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\scr_controller_step.gml</script>
     <script>scripts\scr_character_move.gml</script>
     <script>scripts\scr_player_move.gml</script>
     <script>scripts\scr_gen_room.gml</script>
     <script>scripts\scr_generate_forest.gml</script>
     <script>scripts\scr_game_init.gml</script>
-    <script>scripts\scr_controller_step.gml</script>
-    <script>scripts\scr_gen_doors.gml</script>
+    <scripts name="Room Scripts">
+      <script>scripts\scr_gen_forest_start_room_left.gml</script>
+      <script>scripts\scr_gen_forest_start_room_right.gml</script>
+      <script>scripts\scr_gen_forest_start_room_top.gml</script>
+      <script>scripts\scr_compile_room.gml</script>
+    </scripts>
+    <scripts name="Enemy">
+      <scripts name="Slime">
+        <script>scripts\scr_enemy_slime_step.gml</script>
+        <script>scripts\scr_enemy_slime_init.gml</script>
+      </scripts>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_controller</object>
+    <object>objects\obj_room_compiler</object>
     <object>objects\obj_enemy</object>
+    <object>objects\obj_enemy_slime</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_player</object>
     <object>objects\object3</object>
@@ -78,7 +92,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room_forest</room>
-    <room>rooms\rm_test_room</room>
+    <room>rooms\room_compile_level</room>
+    <room>rooms\room_test_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

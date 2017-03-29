@@ -17,7 +17,7 @@ for (xx = 0; xx < 32; xx++) {
         }
         else if(draw_getpixel(xx,yy) == $80FF80) {
             tile_add(bkg_tiles,32,0,32,32,xx*32+xoffset,yy*32+yoffset,99);
-            instance_create(xx*32+xoffset,yy*32+yoffset,obj_enemy);
+            instance_create(xx*32+xoffset,yy*32+yoffset,obj_enemy_slime);
         }
         else if(draw_getpixel(xx,yy) == $FF0000) {
             tile_add(bkg_tiles,32,0,32,32,xx*32+xoffset,yy*32+yoffset,99);

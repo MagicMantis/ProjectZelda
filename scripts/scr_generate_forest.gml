@@ -60,9 +60,6 @@ switch (irandom(4)) {
 var roomsCreated = 1
 while (!ds_queue_empty(queue)) {
     roomsRemaining = maxRooms - (ds_queue_size(queue)/2) - roomsCreated;
-    //if (roomsRemaining < 0) {
-        show_debug_message(ds_queue_size(queue));
-    //}
     var x_loc = ds_queue_dequeue(queue);
     var y_loc = ds_queue_dequeue(queue);
     if (ds_grid_get(layout, x_loc, y_loc) == -1)

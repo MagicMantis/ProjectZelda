@@ -6,7 +6,6 @@ if (jumping) {
     x_dist = player.x - x;
     y_dist = player.y - y;
     total_dist = point_distance(x,y,player.x,player.y);
-    show_debug_message(total_dist);
     
     x_speed = (x_dist/total_dist) * move_speed;
     y_speed = (y_dist/total_dist) * move_speed;

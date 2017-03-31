@@ -1,4 +1,5 @@
 //generate a room from a sprite
+//script adapted from RealGMLTuts tutorial on youtube
 
 sprite = argument0;
 xoffset = argument1;

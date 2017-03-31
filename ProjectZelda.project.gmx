@@ -12,7 +12,10 @@
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_slime</sprite>
     <sprite>sprites\sprite8</sprite>
-    <sprite>sprites\spr_player_anim</sprite>
+    <sprite>sprites\spr_player_anim_up</sprite>
+    <sprite>sprites\spr_player_anim_down</sprite>
+    <sprite>sprites\spr_player_anim_right</sprite>
+    <sprite>sprites\spr_player_anim_left</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -21,12 +24,13 @@
     <script>scripts\scr_player_move.gml</script>
     <script>scripts\scr_player_action.gml</script>
     <script>scripts\game_init.gml</script>
+    <script>scripts\scr_player_anim_draw.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_enemy</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_player</object>
-    <object>objects\object3</object>
+    <object>objects\obj_slime_obstacle</object>
     <object>objects\obj_player_animed</object>
     <object>objects\obj_controller</object>
   </objects>

@@ -39,6 +39,7 @@
     <sprite>sprites\spr_player_anim_down</sprite>
     <sprite>sprites\spr_player_anim_right</sprite>
     <sprite>sprites\spr_player_anim_left</sprite>
+    <sprite>sprites\spr_play_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkg_tiles</background>
@@ -48,15 +49,8 @@
     <script>scripts\scr_controller_step.gml</script>
     <script>scripts\scr_character_move.gml</script>
     <script>scripts\scr_player_move.gml</script>
-    <script>scripts\scr_gen_room.gml</script>
-    <script>scripts\scr_generate_forest.gml</script>
     <script>scripts\scr_game_init.gml</script>
-    <scripts name="Room Scripts">
-      <script>scripts\scr_gen_forest_start_room_left.gml</script>
-      <script>scripts\scr_gen_forest_start_room_right.gml</script>
-      <script>scripts\scr_gen_forest_start_room_top.gml</script>
-      <script>scripts\scr_compile_room.gml</script>
-    </scripts>
+    <script>scripts\scr_dungeon_room_init.gml</script>
     <scripts name="Enemy">
       <scripts name="Slime">
         <script>scripts\scr_enemy_slime_step.gml</script>
@@ -66,6 +60,17 @@
     <script>scripts\scr_draw_minimap.gml</script>
     <script>scripts\scr_player_action.gml</script>
     <script>scripts\scr_player_anim_draw.gml</script>
+    <scripts name="Level Generation">
+      <scripts name="Room Scripts">
+        <script>scripts\scr_gen_forest_start_room_left.gml</script>
+        <script>scripts\scr_gen_forest_start_room_right.gml</script>
+        <script>scripts\scr_gen_forest_start_room_top.gml</script>
+        <script>scripts\scr_compile_room.gml</script>
+      </scripts>
+      <script>scripts\scr_gen_level.gml</script>
+      <script>scripts\scr_gen_level_forest.gml</script>
+      <script>scripts\scr_gen_room.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_controller</object>
@@ -73,9 +78,8 @@
     <object>objects\obj_enemy</object>
     <object>objects\obj_enemy_slime</object>
     <object>objects\obj_wall</object>
-    <object>objects\obj_player</object>
     <object>objects\obj_slime_obstacle</object>
-    <object>objects\obj_player_animed</object>
+    <object>objects\obj_player</object>
     <objects name="Rooms">
       <objects name="HubWorld">
         <object>objects\obj_hub_building</object>
@@ -103,10 +107,15 @@
         <object>objects\obj_forest_hallway_hor</object>
       </objects>
     </objects>
+    <objects name="Menu">
+      <object>objects\obj_play_button</object>
+      <object>objects\obj_menu_controller</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room_hubworld</room>
     <room>rooms\room_forest</room>
+    <room>rooms\room_menu</room>
+    <room>rooms\room_hubworld</room>
     <room>rooms\room_compile_level</room>
     <room>rooms\room_test_room</room>
   </rooms>

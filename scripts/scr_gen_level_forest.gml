@@ -1,6 +1,6 @@
-//generate a forest dungeon
+///scr_gen_level_forest(maxRooms, maxWidth, maxHeight);
 
-randomize()
+//randomize()
 seed = irandom(1000000);
 random_set_seed(340264);
 //random_set_seed(seed);

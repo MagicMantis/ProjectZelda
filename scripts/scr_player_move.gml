@@ -2,6 +2,8 @@
 //Get input and move
 var playerMovespeed = 5;
 
+show_debug_message(x);
+
 //show_debug_message(global.key_right+global.key_left+global.key_up+global.key_down);
 //show_debug_message(keyboard_check(global.key_right));
 var hspd = (keyboard_check(global.key_right)-keyboard_check(global.key_left))*playerMovespeed;

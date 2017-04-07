@@ -17,12 +17,9 @@ with (obj_forest_start_room_left) { draw_sprite_ext(sprite_index,0,x,y,_scale,_s
 with (obj_player) { 
     var px = floor(x / 1024) * 1024 + (1024)/4;
     var py = floor(y / 1024) * 1024 + (1024)/4;
-    draw_sprite_ext(sprite_index,0,px,py,_scale/2,_scale/2,0,c_white,1); 
+    draw_sprite_ext(spr_player,facing_dir,px,py,_scale/2,_scale/2,0,c_white,1); 
 }
 
 surface_reset_target();
 
 draw_surface(map_surf,0,0);  //the map surface can be drawn anywere on the screen.
-
-show_debug_message("called");
-

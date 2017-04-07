@@ -35,6 +35,10 @@
     <sprite>sprites\my_map_icon</sprite>
     <sprite>sprites\spr_hub_building</sprite>
     <sprite>sprites\spr_dungeon_staircase</sprite>
+    <sprite>sprites\spr_player_anim_up</sprite>
+    <sprite>sprites\spr_player_anim_down</sprite>
+    <sprite>sprites\spr_player_anim_right</sprite>
+    <sprite>sprites\spr_player_anim_left</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkg_tiles</background>
@@ -60,6 +64,8 @@
       </scripts>
     </scripts>
     <script>scripts\scr_draw_minimap.gml</script>
+    <script>scripts\scr_player_action.gml</script>
+    <script>scripts\scr_player_anim_draw.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_controller</object>
@@ -68,7 +74,8 @@
     <object>objects\obj_enemy_slime</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_player</object>
-    <object>objects\object3</object>
+    <object>objects\obj_slime_obstacle</object>
+    <object>objects\obj_player_animed</object>
     <objects name="Rooms">
       <objects name="HubWorld">
         <object>objects\obj_hub_building</object>

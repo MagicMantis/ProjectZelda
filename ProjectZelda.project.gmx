@@ -33,6 +33,8 @@
     </sprites>
     <sprite>sprites\spr_sludge</sprite>
     <sprite>sprites\my_map_icon</sprite>
+    <sprite>sprites\spr_hub_building</sprite>
+    <sprite>sprites\spr_dungeon_staircase</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkg_tiles</background>
@@ -68,6 +70,10 @@
     <object>objects\obj_player</object>
     <object>objects\object3</object>
     <objects name="Rooms">
+      <objects name="HubWorld">
+        <object>objects\obj_hub_building</object>
+        <object>objects\obj_dungeon_staircase</object>
+      </objects>
       <objects name="Forest">
         <object>objects\obj_forest_start_room_left</object>
         <object>objects\obj_forest_start_room_right</object>
@@ -92,6 +98,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_hubworld</room>
     <room>rooms\room_forest</room>
     <room>rooms\room_compile_level</room>
     <room>rooms\room_test_room</room>

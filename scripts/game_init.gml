@@ -6,4 +6,5 @@ global.key_right = ord('D');
 global.key_left = ord('A');
 global.key_down = ord('S');
 global.key_attack = ord('J');
+obj_player_animed.attackframe = 0;
 show_debug_message("End initialization\n");
